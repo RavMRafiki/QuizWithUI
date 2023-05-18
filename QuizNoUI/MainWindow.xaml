@@ -15,15 +15,20 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>Score</TextBlock>
+            <TextBlock>69</TextBlock>
+        </StackPanel>
         <Grid Grid.Column="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <ProgressBar Margin="10" Width="450" Value="50"/>
+
+                <ProgressBar Margin="10" Width="400" Value="50"/>
                 <Button Margin="10">Start</Button>
                 <Button Margin="10">Stop</Button>
                 <Button Margin="10">Next</Button>
             </StackPanel>
         </Grid>
-        <ListBox Grid.Row="2">
+        <ListBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ListBoxItem>XD</ListBoxItem>
             <ListBoxItem>XD2</ListBoxItem>
         </ListBox>
@@ -37,7 +42,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.ColumnSpan="2">XD Or XDDDDDDD??</Label>
+            <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">XD Or XDDDDDDD??</Label>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <CheckBox/>
                 <TextBlock>XD1</TextBlock>
