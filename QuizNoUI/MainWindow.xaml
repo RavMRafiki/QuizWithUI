@@ -4,8 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizNoUI"
+        
+        xmlns:prop="clr-namespace:QuizNoUI.Properties"
+        xmlns:vm="clr-namespace:QuizNoUI.MVVM.ViewModel"
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:MainViewModel x:Name="viewModel"/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -17,7 +34,7 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock>Score</TextBlock>
-            <TextBlock>69</TextBlock>
+            <TextBlock Text="{Binding GameScore, Mode=OneWay}"></TextBlock>
         </StackPanel>
         <Grid Grid.Column="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -28,7 +45,8 @@
                 <Button Margin="10">Next</Button>
             </StackPanel>
         </Grid>
-        <ListBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ListBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedIndex="{Binding CurrentQuiz, Mode=TwoWay}" 
+                ItemStringFormat="{Binding Quizzes, Mode=OneWay}">
             <ListBoxItem>XD</ListBoxItem>
             <ListBoxItem>XD2</ListBoxItem>
         </ListBox>
@@ -44,20 +62,20 @@
             </Grid.RowDefinitions>
             <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">XD Or XDDDDDDD??</Label>
             <StackPanel Grid.Row="1" Orientation="Vertical">
-                <CheckBox/>
-                <TextBlock>XD1</TextBlock>
+                <CheckBox IsChecked="{Binding Answers[0], Mode=TwoWay}"/>
+                <TextBlock Text="{Binding AnswersText[0]}">XD1</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                <CheckBox></CheckBox>
-                <TextBlock>XD2</TextBlock>
+                <CheckBox IsChecked="{Binding Answers[1], Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="{Binding AnswersText[1]}">XD2</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical">
-                <CheckBox/>
-                <TextBlock>XD3</TextBlock>
+                <CheckBox IsChecked="{Binding Answers[2], Mode=TwoWay}"/>
+                <TextBlock Text="{Binding AnswersText[2]}">XD3</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
-                <CheckBox/>
-                <TextBlock>XD4</TextBlock>
+                <CheckBox IsChecked="{Binding Answers[3], Mode=TwoWay}"/>
+                <TextBlock Text="{Binding AnswersText[3]}">XD4</TextBlock>
             </StackPanel>
         </Grid>
     </Grid>

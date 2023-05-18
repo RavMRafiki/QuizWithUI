@@ -1,4 +1,5 @@
 ﻿using QuizNoUI.MVVM.Model;
+using QuizNoUI.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,7 @@ namespace QuizNoUI
         public MainWindow()
         {
             InitializeComponent();
-            AllQuizzesModel allQuizzesModel = new AllQuizzesModel();
-            allQuizzesModel.LoadQuizzes();
+            
         }
     }
 }

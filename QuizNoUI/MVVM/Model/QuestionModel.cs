@@ -15,6 +15,10 @@ namespace QuizNoUI.MVVM.Model
         {
             QuestionText = questionText;
             Answers = answers;
-        }   
+        }
+        public QuestionModel()
+        {
+
+        }
     }
 }

@@ -16,5 +16,9 @@ namespace QuizNoUI.MVVM.Model
             QuizText = quizText;
             Questions = questions;
         }
+        public override string ToString()
+        {
+            return QuizText;
+        }
     }
 }
