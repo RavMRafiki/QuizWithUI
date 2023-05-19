@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace QuizNoUI.MVVM.ViewModel
 {
@@ -34,6 +35,31 @@ namespace QuizNoUI.MVVM.ViewModel
             {
                 var output = cnn.Query<QuizModel>("select * from Quiz", new DynamicParameters());
                 return output.ToList();
+            }
+        }
+        private ICommand _startGame;
+
+        public ICommand StartGame
+        {
+            get
+            {
+                // jesli nie jest określone polecenie to tworzymy je i zwracamy poprozez 
+                //pomocniczy typ RelayCommand
+                return _startGame ?? (_startGame = new BaseClass.RelayCommand(
+                    //co wykonuje polecenie
+                    (p) => { 
+                        GameStarted = true;
+                        GameScore= 0;
+                        CurrentQuestion = 0;
+                        GameFinished = false;
+                        CurrentQuestionText = string.Empty;
+                        Answers = new bool[] { false, false, false, false };
+                        AnswersText = new string[] { "", "", "", "" };
+                    }
+                    ,
+                    //warunek kiedy może je wykonać
+                    p => true)
+                    );
             }
         }
     }

@@ -40,7 +40,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
                 <ProgressBar Margin="10" Width="400" Value="50"/>
-                <Button Margin="10">Start</Button>
+                <Button Margin="10" Command="{Binding StartGame}">Start</Button>
                 <Button Margin="10">Stop</Button>
                 <Button Margin="10">Next</Button>
             </StackPanel>
@@ -60,13 +60,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">XD Or XDDDDDDD??</Label>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding CurrentQuestionText}">XD Or XDDDDDDD??</TextBlock>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <CheckBox IsChecked="{Binding Answers[0], Mode=TwoWay}"/>
                 <TextBlock Text="{Binding AnswersText[0]}">XD1</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                <CheckBox IsChecked="{Binding Answers[1], Mode=TwoWay}"></CheckBox>
+                <CheckBox IsChecked="{Binding Answers[1], Mode=TwoWay}"/>
                 <TextBlock Text="{Binding AnswersText[1]}">XD2</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical">
