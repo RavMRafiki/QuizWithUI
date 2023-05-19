@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="MVVM\Model\AllQuizzesModel.cs" />
     <Compile Include="MVVM\Model\AnswerModel.cs" />
+    <Compile Include="MVVM\Model\DatabaseAcces.cs" />
     <Compile Include="MVVM\Model\QuestionModel.cs" />
     <Compile Include="MVVM\Model\QuizModel.cs" />
     <Compile Include="MVVM\ViewModel\BaseClass\BaseViewModel.cs" />
