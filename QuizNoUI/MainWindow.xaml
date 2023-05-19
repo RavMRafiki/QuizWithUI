@@ -37,16 +37,18 @@
             <TextBlock Text="{Binding GameScore, Mode=OneWay}"></TextBlock>
         </StackPanel>
         <Grid Grid.Column="2">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock>Time</TextBlock>
+                <TextBlock Text="{Binding GameScore, Mode=OneWay}"></TextBlock>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-
-                <ProgressBar Margin="10" Width="400" Value="50"/>
-                <Button Margin="10" Command="{Binding StartGame}">Start</Button>
-                <Button Margin="10" Command="{Binding StopGame}">Stop</Button>
-                <Button Margin="10" Command="{Binding NextQ}">Next</Button>
+                <Button Margin="10" Width="80" Command="{Binding StartGame}" IsEnabled="{Binding GameFinished}">Start</Button>
+                <Button Margin="10" Width="80" IsEnabled="{Binding GameStarted}" Command="{Binding StopGame}">Stop</Button>
+                <Button Margin="10" Width="80" IsEnabled="{Binding GameStarted}" Command="{Binding NextQ}">Next</Button>
             </StackPanel>
         </Grid>
         <ListBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" SelectedIndex="{Binding CurrentQuiz, Mode=TwoWay}" 
-                ItemsSource="{Binding Path=Quizzes}">
+                ItemsSource="{Binding Path=Quizzes}" Width="150" IsEnabled="{Binding GameFinished}">
         </ListBox>
         <Grid Grid.Column="2" Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -59,20 +61,20 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding CurrentQuestionText}"></TextBlock>
-            <StackPanel Grid.Row="1" Orientation="Vertical">
-                <CheckBox x:Name="chb0" IsChecked="{Binding Answers[0], Mode=TwoWay}"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical" >
+                <CheckBox x:Name="chb0" IsChecked="{Binding Answers[0], Mode=TwoWay}" IsEnabled="{Binding GameStarted}"/>
                 <TextBlock Text="{Binding AnswersText[0]}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                <CheckBox x:Name="chb1" IsChecked="{Binding Answers[1], Mode=TwoWay}"/>
+                <CheckBox x:Name="chb1" IsChecked="{Binding Answers[1], Mode=TwoWay}" IsEnabled="{Binding GameStarted}"/>
                 <TextBlock Text="{Binding AnswersText[1]}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical">
-                <CheckBox x:Name="chb2" IsChecked="{Binding Answers[2], Mode=TwoWay}"/>
+                <CheckBox x:Name="chb2" IsChecked="{Binding Answers[2], Mode=TwoWay}" IsEnabled="{Binding GameStarted}"/>
                 <TextBlock Text="{Binding AnswersText[2]}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
-                <CheckBox x:Name="chb3" IsChecked="{Binding Answers[3], Mode=TwoWay}"/>
+                <CheckBox x:Name="chb3" IsChecked="{Binding Answers[3], Mode=TwoWay}" IsEnabled="{Binding GameStarted}"/>
                 <TextBlock Text="{Binding AnswersText[3]}"></TextBlock>
             </StackPanel>
         </Grid>

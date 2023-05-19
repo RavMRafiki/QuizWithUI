@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.Timers;
 
 namespace QuizNoUI.MVVM.ViewModel
 {
@@ -22,6 +23,7 @@ namespace QuizNoUI.MVVM.ViewModel
         {
             _databaseAcces = new Model.DatabaseAcces();
             setValues();
+            startTime();
         }
         private int[] quizids = null;
         private void setValues()
@@ -33,7 +35,6 @@ namespace QuizNoUI.MVVM.ViewModel
                 Quizzes.Add(_databaseAcces.quizName(quizids[i]));
             }
         }
-
 
         private int currentQuiz = 0;
         public int CurrentQuiz
@@ -82,6 +83,18 @@ namespace QuizNoUI.MVVM.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GameScore)));
             }
         }
+        private int gametime;
+        public int GameTime
+        {
+            get { return gametime; }
+            private set
+            {
+                gametime = value;
+
+                //zgłoszenie zmiany wartości tej własności
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GameTime)));
+            }
+        }
         private bool gameStarted;
         public bool GameStarted
         {
@@ -94,7 +107,7 @@ namespace QuizNoUI.MVVM.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GameStarted)));
             }
         }
-        private bool gameFinished;
+        private bool gameFinished = true;
         public bool GameFinished
         {
             get { return gameFinished; }
@@ -174,6 +187,21 @@ namespace QuizNoUI.MVVM.ViewModel
             }
             AnswersCorrect = _answers.ToArray();
         }
+        private void startTime()
+        {
+            var timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += OnTimerElapsed;
+            timer.Start();
+
+        }
+        private void OnTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            if (GameStarted)
+            {
+                GameTime += 1;
+            }
+        }
         private ICommand _startGame;
 
         public ICommand StartGame
@@ -194,6 +222,7 @@ namespace QuizNoUI.MVVM.ViewModel
                         Answers = new bool[] { false, false, false, false };
                         AnswersText = new string[] { "1", "2", "3", "4" };
                         readQuestion();
+                        GameTime= 0;
                     }
                     ,
                     //warunek kiedy może je wykonać
