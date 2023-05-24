@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:QuizNoUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/GameButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/AnswerButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
